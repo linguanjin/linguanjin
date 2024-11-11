@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本模板</title>
+    <!-- 1) 引入swiper样式 -->
+    <link rel="stylesheet" href="./libs/swiperV7/css/swiper.min.css">
+    <style>
+        .box {
+            width:350px;
+            height: 400px;
+            margin: 100px auto;
+        }
+
+        .box .swiper-slide {
+            width:350px;
+            height: 400px;
+            border-radius: 20px;
+            padding: 10px;
+        }
+        .box .swiper {
+            overflow: initial;
+            
+        }
+        .box .swiper-slide.bg1 {
+            background-color: deepskyblue;
+        }
+
+        .box .swiper-slide.bg2 {
+            background-color: yellowgreen;
+        }
+
+        .box .swiper-slide.bg3 {
+            background-color: darkorchid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <!-- 3） 复制swiper模板HTML -->
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg1">slider1</div>
+                <div class="swiper-slide bg2">slider2</div>
+                <div class="swiper-slide bg3">slider3</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 2）引入swiper脚本 -->
+    <script src="./libs/swiperV7/js/swiper-bundle.js"></script>
+    <script>
+        // 4) 创建swiper实例
+        var mySwiper = new Swiper('.swiper', {
+            //可选选项，自动滑动
+            autoplay: true,
+            // 设置轮播方向 horizontal（水平）    vertical （垂直）
+            // direction: 'horizontal',
+            // 无缝衔接
+            loop: true,
+            // 不同切换效果
+            effect: 'cards',
+        })
+    </script>
+</body>
+
+</html>

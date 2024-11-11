@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本模板</title>
+    <style>
+        .layout {
+            width: 400px;
+            height: 400px;
+            background-color: #f0f0f0;
+            border: 20px solid #ccc;
+            margin: 0 auto;
+        }
+
+        p,
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+        }
+
+        .main {
+            width: 400px;
+            height: 360px;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main p {
+            position: absolute;
+        }
+
+        .form {
+            width: 100%;
+            display: flex;
+        }
+
+        .form input {
+            height: 40px;
+            box-sizing: border-box;
+            flex-grow: 1;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .form button {
+            width: 80px;
+            height: 40px;
+            border: 0;
+            background-color: deepskyblue;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="layout">
+        <div class="main">
+            <p style="left: 320px; top: 50px;width: 100%;">评论信息~~</p>
+        </div>
+        <div class="form">
+            <input type="text" class="inp" placeholder="请输入评论">
+            <button class="btn">发送</button>
+        </div>
+    </div>
+    <script>
+        // 要求：
+        // 模仿“b站”的弹幕
+        // 点击 “发送”按钮，获取输入框的文本作为“评论信息~~”
+        // “评论信息”从右侧移动进入“白色区域”的，从右边向左边运动直至消失
+        // “评论信息”的垂直位置的随机的
+
+        var main = document.querySelector('.main');
+        var pElement = document.querySelector('p');
+        var inp = document.querySelector('.form .inp');
+        var btn = document.querySelector('.form .btn');
+
+        var speed = 10;
+        pElement.xxxx = null;
+
+        btn.onclick = function () {
+            pElement.innerText = inp.value;
+            inp.value = null;
+            if (inp.value !== "") {
+                alert('不能为空');
+            }
+            // console.log(pElement.innerText.length);
+            var xh = Math.floor(Math.random() * 320);
+            pElement.style.top = xh + 'px'
+
+            clearInterval(pElement.xxxx);
+            pElement.xxxx = setInterval(function () {
+                var n = getComputedStyle(pElement)['left'];
+
+                n = parseInt(n);
+                if (n < pElement.innerText.length * -(parseInt(getComputedStyle(pElement)['fontSize']))) {
+                    clearInterval(pElement.xxxx);
+                    return false;
+                }
+                pElement.style['left'] = n - speed + 'px';
+            }, 50)
+            n = getComputedStyle(main)['width']
+            n = parseInt(n);
+            pElement.style['left'] = n + 'px'
+            // console.log(pElement.style['left'] = n  + 'px');
+
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!-- 
+var n= getComputedStyle(pElement)['left']
+console.log(parseInt(n));
+Math.floor(Math.random()*320)
+if(n<inp.value.length*(getComputedStyle(pElement)['fontSize']) ){
+
+} -->

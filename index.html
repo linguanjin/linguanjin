@@ -1,18 +1,230 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>基本模板</title>
-    <style></style>
-</head>
-<body>
-<h3>hellow</h3>
+    <link rel="stylesheet" href="./libs/bootcss/css/bootstrap.css">
+    <style>
+        * {
+            list-style: none;
+        }
 
+        #lgj {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 1500px;
+            margin: 0 auto;
+        }
+
+        .left-box {
+            width: 30%;
+            height: 100%;
+            background-color: #fff;
+            margin-left: 50px;
+            text-align: center;
+        }
+
+        .left-box .text {
+            position: relative;
+        }
+
+        .left-box .img {
+            width: 70px;
+            height: 75px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .left-box .img img {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .right-box {
+            width: 60%;
+            height: 100%;
+            margin-right: 50px;
+            text-align: center;
+        }
+        .right-box .b-items {
+          
+        }
+    </style>
+</head>
+
+<body>
+    <div id="lgj" class="d-flex justify-content-around bg-light">
+        <div class="left-box mt-1 shadow-lg p-3 mb-5 bg-white rounded ">
+            <div class="l-top mb-3">
+                <h3>个人简介</h3>
+            </div>
+            <div class="text mt-5">
+                <div class="img">
+                    <img src="./images/4.jpg" class="rounded-circle" alt="...">
+                </div>
+                <h4 class="pt-5">林冠锦</h4>
+            </div>
+
+        </div>
+        <div class="right-box mt-1 shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="r-top">
+                <h3>项目经验</h3>
+            </div>
+            <div class="buttom">
+                <ul class="b-items d-flex flex-column">
+                    <li class="item-1 d-flex flex-column">
+                        <h4>bootstrap响应式布局网站</h4>
+                        <div class="item-title-1">
+                            <a href="./projectv1.0.0/index.html">
+                                <h4>旅游网站</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    “环球之旅”旅游网站是每一位怀揣环游世界梦想的旅行者的终极指南和贴心伙伴。我们致力于为您打造一个无缝连接全球各个角落精彩的虚拟空间，让世界尽在您的指尖。
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./个站/index.html">
+                                <h4>游戏网站</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    幻想世界游戏网站是一扇通往充满无尽奇妙与冒险的虚拟世界大门。在这里，每一位玩家都将踏上一段超越想象的梦幻旅程，体验前所未有的游戏盛宴。
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-2 d-flex flex-column">
+                        <h4>demo</h4>
+                        <div class="item-title-1">
+                            <a href="./天气查询/index.html">
+                                <h4>天气查询</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                   
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./9_彩票生成器.html">
+                                <h4>彩票生成器</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./轮播图/轮播图.html">
+                                <h4>轮播图</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./3_鼠标按下滑动验证.html">
+                                <h4>鼠标按下滑动验证</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./商品放大镜效果.html">
+                                <h4>图片放大镜</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./CSS3幻灯片效果.html">
+                                <h4>幻灯片</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./时钟.html">
+                                <h4>时钟</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./demo02.html">
+                                <h4>模仿“b站”的弹幕</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                        <div class="item-title-1">
+                            <a href="./">
+                                <h4></h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-3 d-flex flex-column">
+                        <h4>小游戏</h4>
+                        <div class="item-title-1">
+                            <a href="./snake/indexV2.html">
+                                <h4>贪吃蛇</h4>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                    欢迎来到贪吃蛇小游戏的奇妙世界！这是一个简单却极具魅力的游戏平台，无论你是想在闲暇时刻寻找乐趣，还是渴望挑战自己的反应速度和策略思维，这里的贪吃蛇游戏都将为你带来非凡体验。
+                                </span>
+                            </div>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./libs/bootcss/js/bootstrap.bundle.js"></script>
+    <script src="./libs/jquery@3.5.1/jquery-3.5.1.js"></script>
     <script>
 
 
     </script>
 </body>
+
 </html>
+
+<!-- 
+
+-->·

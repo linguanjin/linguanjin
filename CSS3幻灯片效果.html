@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本模板</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .banner {
+            width: 720px;
+            height: 320px;
+            border: 10px solid #ccc; 
+            margin: 200px auto 0px;
+            overflow-x: hidden;
+        }
+        /* 隐藏滚动条 */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        /* 1. 定义动画 */
+        @keyframes move {
+            0% {
+                transform: translateX(0px);
+            }
+            100% {
+                transform: translateX(-960px);
+            }
+        }
+        .photo {
+            width: 1920px;
+            /* 2. 使用动画 */
+            animation: move 6s  infinite  linear;
+        }
+        .photo:hover {
+            /* 暂停执行动画 */
+            animation-play-state: paused;
+        }
+        .photo ul {
+            width:960;
+            float: left;
+            display: flex;
+        }
+        .photo ul li img {
+            display: block;
+            /* 过渡属性 */
+            transition: all .2s;
+        }
+        .photo ul li:hover img {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <!-- 改变photo盒子的水平位置 -->
+        <div class="photo">
+            <ul>
+                <li><img src="./images/honglou.jpeg" alt="1"></li>
+                <li><img src="./images/sanguo.jpeg" alt="2"></li>
+                <li><img src="./images/shuihu.jpeg" alt="3"></li>
+                <li><img src="./images/xiyou.jpeg" alt="4"></li>
+            </ul>
+            <ul>
+                <li><img src="./images/honglou.jpeg" alt="1"></li>
+                <li><img src="./images/sanguo.jpeg" alt="2"></li>
+                <li><img src="./images/shuihu.jpeg" alt="3"></li>
+                <li><img src="./images/xiyou.jpeg" alt="4"></li>
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本模板</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 1400px;
+            margin: 50px auto;
+
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .left {
+            margin-right: 10px;
+            width: 492px;
+            height: 350px;
+            position: relative;
+        }
+
+        .left img {
+            display: block;
+        }
+
+        .left .mask {
+            width: 240px;
+            height: 240px;
+            background-color: rgba(255, 255, 0, .55);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+
+        .right {
+            width: 540px;
+            height: 540px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+
+        .right img {
+            width: 1125px;
+            height: 800px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+
+        <div class="left fl">
+            <img src="./images/1.jpg" alt="small">
+
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+        </div>
+
+        <div class="right fl">
+            <!-- 大图片 -->
+            <img src="./images/2.jpg" alt="big">
+        </div>
+
+    </div>
+
+    <script>
+        // 需求：
+        // 1鼠标移入left标签，显示right标签和“遮罩层”标签
+        // 2鼠标移出left标签，隐藏right标签和“遮罩层”标签
+        // 3鼠标在left标签上移动，“遮罩层”跟随鼠标移动
+        // 4“遮罩层”标签向右移动，右侧大图片则向左移动;  “遮罩层”标签向下移动，右侧大图片则向上移动
+        // 5“遮罩层”标签向左移动，右侧大图片则向右移动;  “遮罩层”标签向上移动，右侧大图片则向下移动
+        // 6实现“遮罩层”和大图片联动效果
+
+
+        // 编码：
+        var left = document.querySelector('.left');
+        var mask = document.querySelector('.mask');
+        var right = document.querySelector('.right');
+        var img = document.querySelector('.right img')
+
+        // 显示right标签和“遮罩层”标签
+        var show = function () {
+            mask.style.display = 'block';
+            right.style.display = 'block';
+        }
+        // 隐藏right标签和“遮罩层”标签
+        var hide = function () {
+            mask.style.display = 'none';
+            right.style.display = 'none';
+        }
+        // 鼠标移入left_element显示、鼠标离开left_element隐藏
+        left.addEventListener('mouseenter', function () {
+            show();
+        })
+        left.addEventListener('mouseleave', function () {
+            hide();
+        })
+        // 鼠标在left标签上移动，“遮罩层”跟随鼠标移动
+        left.addEventListener('mousemove', function (event) {
+            // 计算鼠标在left盒子的坐标位置
+            var x = event.pageX - left.offsetLeft;
+            var y = event.pageY - left.offsetTop;
+            // 设置鼠标在“遮罩层”的中心位置
+            x = x - mask.offsetWidth / 2;
+            y = y - mask.offsetHeight / 2;
+
+            // 计算“遮罩层”向右可移动的最大值
+            var max_w = left.offsetWidth - mask.offsetWidth;
+            var max_h = left.offsetHeight - mask.offsetHeight;
+
+            // 判断 “遮罩层”可移动范围
+            // if(x < 0) { x = 0; }
+            if (x < 0) x = 0;
+            if (x > max_w) x = max_w;
+            if (y < 0) y = 0;
+            if (y > max_h) y = max_h;
+            // 设置“遮罩层”盒子的位置
+            mask.style.left = x + 'px';
+            mask.style.top = y + 'px';
+
+            // console.log(x,y);
+
+            // “遮罩层”标签向右移动，右侧大图片则向左移动;  “遮罩层”标签向下移动，右侧大图片则向上移动
+            // “遮罩层”标签向左移动，右侧大图片则向右移动;  “遮罩层”标签向上移动，右侧大图片则向下移动
+
+            // a / b = c / d; 目前已知a,b,d,求c的值？ c = a / b * d;
+
+            // 比例：
+            // x (a)
+            // max_w (b)
+            var domeX = x / max_w;
+            var domeY = y / max_h;
+
+            // 获取大图片可移动的最大值 (d)
+            var bigMax_w = img.offsetWidth-right.offsetWidth;
+            var bigMax_h = img.offsetHeight-right.offsetHeight;
+
+            // 计算大图片的位置
+            // x1(c)
+            var x1 = domeX * bigMax_w;
+            var y1 = domeY * bigMax_h;
+
+            // 设置大图片的位置
+            img.style["left"] = -x1 + 'px';
+            img.style['top'] = -y1 + 'px';
+        })
+
+
+
+    </script>
+</body>
+
+</html>

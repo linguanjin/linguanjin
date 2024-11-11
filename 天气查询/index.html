@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本模板</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            background-color: deepskyblue;
+        }
+
+        .search {
+            padding: 10px 15px;
+            width: 100%;
+            display: flex;
+        }
+
+        .search .inp-search {
+            width: calc(100% - 100px);
+            height: 44px;
+            padding-left: 10px;
+            font-size: 18px;
+            outline-color: orangered;
+            border: 0;
+        }
+
+        .search .btn-search {
+            width: 100px;
+            height: 44px;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .list {
+            padding: 10px 15px;
+            width: 100%;
+        }
+
+        .list li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .list li img {
+            width: 80px;
+        }
+
+        .list li div {
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .city {
+            padding: 10px 15px;
+        }
+
+        .city span {
+            font-size: 40px;
+        }
+
+        .message {
+            text-align: center;
+            color: #666;
+            padding: 30px 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="search">
+            <input class="inp-search" type="text" placeholder="请输入城市，例如：纽约">
+            <button class="btn-search">查询</button>
+        </div>
+        <div class="city">
+            城市: <span>??</span>
+        </div>
+        <div class="list">
+            <p class="message">暂无该城市的天气信息~~</p>
+            <ul>
+                <!--                 
+                   <li>
+                       <div><img src="./assets/cloudy.png" alt=""></div>
+                       <div>2024-08-09</div>
+                       <div>30°C ~ 35°C</div>
+                       <div>星期五</div>
+                       <div>多云</div>
+                   </li>
+                   -->
+            </ul>
+        </div>
+    </div>
+    <!-- http://v1.yiketianqi.com/api -->
+
+    <script src="./jquery@3.5.1/jquery-3.5.1.js"></script>
+    <script>
+        $('.btn-search').on('click', function () {
+            // console.log(111);
+            var inp = $('.inp-search').val();
+            if (inp == "") return;
+            
+            // 执行ajax
+            $.ajax({
+                url: 'http://v1.yiketianqi.com/api?version=v5&appid=61162721&appsecret=pYbEGSz3&city=堪培拉',
+                type: 'get',
+                data: {
+                    city: inp
+                },
+                success: function (res) {
+                    // console.log(res);
+                    // 判断免费次数是否用完
+                    // errmsg
+                    if(res.errcode){
+                        alert(res.errmsg);
+                        return;
+                    }
+
+                    // 渲染城市
+                    $('.city span').html(res.city);
+                    // 渲染天气信息
+                    var str = '';
+                    // 记录7天的天气信息
+                    var arr = res.data;
+                    // 循环数组
+                    for (var i = 0; i < arr.length; i++) {
+                        str += `
+                            <li>
+                            <div><img src="./assets/${arr[i].wea_img}.png" alt=""></div>
+                            <div>${arr[i].date}</div>
+                            <div>${arr[i].tem1}°C ~ ${arr[i].tem2}°C</div>
+                            <div>${arr[i].wea}</div>
+                            <div>${arr[i].win}</div>
+                            <div>${arr[i].win_speed}</div>
+                        </li>
+                    `
+                    }
+                    console.log(str);
+                    
+                    // 循环结束
+                    $('.list ul').html(str)
+                    // 重置输入框
+                    $('.inp-search').val("");
+                }
+
+            })
+        })
+        
+        
+
+    </script>
+</body>
+
+</html>

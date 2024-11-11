@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本模板</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .map {
+            width: 640px;
+            height: 300px;
+            background-image: url(./images/3.jpeg);
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+
+        /* 坑 */
+        .mask {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            background-color: rgba(255, 0, 0, .85);
+            background-repeat: no-repeat;
+            opacity: .5;
+        }
+        .mask::before , .mask::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 0, 0, .85);
+            position: absolute;
+        }
+        .mask::before {
+            top: -20px;
+            left: 25px;
+            height: 20px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .mask::after {
+            top: 25px;
+            left: -20px;
+            width: 20px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        .square {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            /* 方块的top属性值和遮罩层的top属性是相同的 */
+            top: 100px;
+            left: 20px;
+            background-image: url(./images/3.jpeg);
+            background-repeat: no-repeat;
+            /* background-position: -随机X坐标 -随机Y坐标; */
+            /* background-position: -200px -100px; */
+
+            /* 阴影属性 */
+            box-shadow: 0px 0px 10px  #fff;
+        }
+        .before , .after {
+            width: 30px;
+            height: 30px;
+            background-image: url(./images/3.jpeg);
+            background-repeat: no-repeat;
+            position: absolute;
+            /* box-shadow: 0px 0px 10px  #fff; */
+        }
+        .before {
+            top: -20px;
+            left: 25px;
+            height: 20px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .after {
+            top: 25px;
+            left: -20px;
+            width: 20px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+
+        .progress {
+            width: 640px;
+            height: 40px;
+            background-color: #ccc;
+            margin-top: 10px;
+        }
+
+        .progress ul {
+            width: 640px;
+            height: 40px;
+        }
+
+        .progress ul li {
+            width: 80px;
+            height: 40px;
+            background-color: deepskyblue;
+            border-radius: 20px;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <!-- 活动范围的标签 -->
+        <div class="map">
+            <!-- 遮罩层（挖坑） -->
+            <div class="mask">
+                
+            </div>
+            <!-- 方块（填坑） -->
+            <div class="square">
+                <i class="before"></i>
+                <i class="after"></i>
+            </div>
+        </div>
+
+        <div class="progress">
+            <ul>
+                <!-- 按钮 -->
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script>
+        // 需求：
+        // 1、遮罩层和方块是随机坐标、方块的背景图是随机的
+        // 2、按下“按钮”可以移动按钮和方块标签
+        // 3、方块标签和遮罩层标签重叠时表示验证通过（允许有2px偏差）
+
+
+
+        // 编码：
+        // 1） 获取需要操作的标签
+        var mask_element = document.querySelector(".mask");
+        var square_element = document.querySelector(".square");
+        var map_element = document.querySelector(".map");
+        var button = document.querySelector(".progress li");
+        var progress = document.querySelector(".progress");
+        var before_element = document.querySelector(".before");
+        var after_element = document.querySelector(".after");
+        // console.log(before_element);
+        // console.log(after_element);
+
+
+        // 定义布尔值
+        var isMouseDown = false;
+
+
+        // 2) 封装函数 产生随机的位置
+        function getPos() {
+            // 获取指定活动范围
+            var height = map_element.offsetHeight - 100;
+            // 返回一个对象（坐标）
+            return {
+                // 640 - 80 = 560 (最大值)
+                x: Math.floor(Math.random() * 360 + 200),// 让遮罩层水平位置偏右 [200 ~ 560]
+                y: Math.floor(Math.random() * height + 20),
+            }
+        }
+
+        // 3) 初始化
+        function init() {
+            // 获取随机的坐标
+            var point = getPos();
+            // console.log(point);// 检查变量是否有值、值是否正确
+
+            // 设置遮罩层标签的位置
+            mask_element.style['left'] = point.x + "px";
+            mask_element.style['top'] = point.y + "px";
+
+            // 设置方块标签的位置和背景坐标
+            square_element.style['top'] = point.y + "px";
+            square_element.style['backgroundPosition'] = `-${point.x}px  -${point.y}px`;
+
+            // 设置before和after标签的背景图位置
+            var bx = point.x + 25;
+            var by = point.y - 20;
+            before_element.style['backgroundPosition'] = `-${bx}px  -${by}px`;
+
+
+            var ax = point.x - 20;
+            var ay = point.y + 25;
+            after_element.style['backgroundPosition'] = `-${ax}px  -${ay}px`;
+        }
+
+        // 4) 鼠标按下按钮，滑动方块
+        button.onmousedown = function () {
+            isMouseDown = true;
+        }
+
+        // 鼠标在页面上移动
+        document.onmousemove = function (event) {
+            // xxx.... 
+            if (isMouseDown) {
+                // 计算按钮和块级的位置
+                var cX = event.clientX;
+                var x = cX - button.offsetWidth / 2;
+                // 判断按钮可滑动的做大值
+                if (x > (progress.offsetWidth - button.offsetWidth)) {
+                    x = progress.offsetWidth - button.offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                // 设置按钮的位置
+                button.style['marginLeft'] = x + "px";
+                // 设置方块的位置
+                square_element.style['left'] = x + "px";
+            }
+        }
+
+        // 鼠标在页面上松开
+        document.onmouseup = function () {
+            isMouseDown = false;
+            // 当前鼠标松开执行验证逻辑
+            // 问题：怎么判断方块和遮罩层重叠?
+            // 获取遮罩层的位置X
+            var left = getComputedStyle(mask_element)['left'];
+            left = parseInt(left);
+
+            // 获取方块的位置X
+            var x = getComputedStyle(square_element)['left'];
+            x = parseInt(x);
+            // 判断是否重叠
+            if (x > (left - 2) && x < (left + 2)) {
+                console.log("验证通过...");
+            }
+            else {
+                console.log("验证失败...")
+            }
+        }
+
+        // 初始化页面
+        init();
+
+    </script>
+</body>
+
+</html>
