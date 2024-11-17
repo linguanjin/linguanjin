@@ -16,14 +16,14 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 1500px;
+            height: 1100px;
             margin: 0 auto;
         }
 
         .left-box {
             width: 30%;
             height: 100%;
-            background-color: #fff;
+            background-color: rgba(62, 221, 236, 0.55);
             margin-left: 50px;
             text-align: center;
         }
@@ -53,15 +53,77 @@
             margin-right: 50px;
             text-align: center;
         }
-        .right-box .b-items {
+
+        .right-box .b-items li h4 {
+            font-size: 30px;
+        }
+
+        .right-box .b-items li a {
+            font-size: 24px !important;
+        }
+
+        .right-box .b-items .item-1 {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(204, 204, 204, .55);
+            border-radius: 50px;
+           
+        }
+
+        .right-box .b-items .item-1 .item-title-1 {
+            position: relative;
+        }
+
+        .right-box .b-items .item-1 img {
+            width: 75px;
+            height: 75px;
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translate(0, -50%);
+        }
+
+        .right-box .b-items .item-2 {
+            width: 100%;
+            box-sizing: border-box;
+            height: 300px;
+            background-color: rgba(204, 204, 204, .55);
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .right-box .b-items .item-2 .item-title-1,
+        .right-box .b-items .item-2 .item-title-2 {
+            position: relative;
+
+        }
+
+        .right-box .b-items .item-2 img {
+            width: 75px;
+            height: 75px;
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translate(0, -50%);
+        }
+        .right-box .b-items .item-3{
+            width: 100%;
+            box-sizing: border-box;
+            background-color: rgba(204, 204, 204, .55);
+            border-radius: 50px;
           
+        }
+        .right-box .b-items .item-3 .demo{
+            
         }
     </style>
 </head>
 
 <body>
-    <div id="lgj" class="d-flex justify-content-around bg-light">
-        <div class="left-box mt-1 shadow-lg p-3 mb-5 bg-white rounded ">
+    <div id="lgj" class="d-flex justify-content-around bg-light pb-5 pt-5">
+        <div class="left-box mt-1 shadow-lg p-4 mb-5 rounded ">
             <div class="l-top mb-3">
                 <h3>个人简介</h3>
             </div>
@@ -79,136 +141,96 @@
             </div>
             <div class="buttom">
                 <ul class="b-items d-flex flex-column">
-                    <li class="item-1 d-flex flex-column">
-                        <h4>bootstrap响应式布局网站</h4>
-                        <div class="item-title-1">
-                            <a href="./projectv1.0.0/index.html">
-                                <h4>旅游网站</h4>
+                    <li class="item-1 shadow p-3 mb-5 rounded">
+                        <h4>小游戏</h4>
+                        <div class="item-title-1 ">
+                            <img src="./images/tcs.jpeg" alt="">
+                            <a href="./snake/indexV2.html">
+                                <p>贪吃蛇</p>
                             </a>
                             <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                <span class="d-inline-block text-truncate" style="max-width: 500px;">
+                                    欢迎来到贪吃蛇小游戏的奇妙世界！这是一个简单却极具魅力的游戏平台，无论你是想在闲暇时刻寻找乐趣，还是渴望挑战自己的反应速度和策略思维，这里的贪吃蛇游戏都将为你带来非凡体验。
+                                </span>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="item-2 mt-5 shadow p-3 mb-5 rounded">
+                        <h4>bootstrap响应式布局网站</h4>
+                        <div class="item-title-1">
+                            <img class="p5" src="./images/p_img_5.jpg" alt="">
+                            <a href="./projectv1.0.0/index.html">
+                                <p>旅游网站</p>
+                            </a>
+                            <div class="item-text">
+                                <span class="d-inline-block text-truncate" style="max-width: 500px;">
                                     “环球之旅”旅游网站是每一位怀揣环游世界梦想的旅行者的终极指南和贴心伙伴。我们致力于为您打造一个无缝连接全球各个角落精彩的虚拟空间，让世界尽在您的指尖。
                                 </span>
                             </div>
                         </div>
-                        <div class="item-title-1">
+                        <div class="item-title-2">
+                            <img class="g2" src="./images/g2.jpg" alt="">
                             <a href="./个站/index.html">
-                                <h4>游戏网站</h4>
+                                <p>游戏网站</p>
                             </a>
                             <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
+                                <span class="d-inline-block text-truncate" style="max-width: 500px;">
                                     幻想世界游戏网站是一扇通往充满无尽奇妙与冒险的虚拟世界大门。在这里，每一位玩家都将踏上一段超越想象的梦幻旅程，体验前所未有的游戏盛宴。
                                 </span>
                             </div>
                         </div>
                     </li>
-                    <li class="item-2 d-flex flex-column">
+                    <li class="item-3 mt-5 shadow p-3 mb-5 rounded">
                         <h4>demo</h4>
-                        <div class="item-title-1">
-                            <a href="./天气查询/index.html">
-                                <h4>天气查询</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                   
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./9_彩票生成器.html">
-                                <h4>彩票生成器</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./轮播图/轮播图.html">
-                                <h4>轮播图</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./3_鼠标按下滑动验证.html">
-                                <h4>鼠标按下滑动验证</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./商品放大镜效果.html">
-                                <h4>图片放大镜</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./CSS3幻灯片效果.html">
-                                <h4>幻灯片</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./时钟.html">
-                                <h4>时钟</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./demo02.html">
-                                <h4>模仿“b站”的弹幕</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
-                        <div class="item-title-1">
-                            <a href="./">
-                                <h4></h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    
-                                </span>
-                            </div>
-                        </div>
+                        <ol class="demo d-flex flex-row justify-content-around">
+                            <li class="demo-1">
+                                <div class="item-title-1">
+                                    <a href="./天气查询/index.html">
+                                        <p>天气查询</p>
+                                    </a>
+                                </div>
+                                <div class="item-title-2">
+                                    <a href="./9_彩票生成器.html">
+                                        <p>彩票生成器</p>
+                                    </a>
+                                </div>
+                                <div class="item-title-3">
+                                    <a href="./轮播图/轮播图.html">
+                                        <p>轮播图</p>
+                                    </a>
+                                </div>
+                                <div class="item-title-4">
+                                    <a href="./3_鼠标按下滑动验证.html">
+                                        <p>鼠标按下滑动验证</p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="demo-2">
+                                <div class="item-title-5">
+                                    <a href="./商品放大镜效果.html">
+                                        <p>图片放大镜</p>
+                                    </a>
+                                </div>
+                                <div class="item-title-6">
+                                    <a href="./CSS3幻灯片效果.html">
+                                        <p>幻灯片</p>
+                                    </a>
+                                </div>
+                                <div class="item-title-7">
+                                    <a href="./时钟.html">
+                                        <p>时钟</p>
+                                    </a>
+                                </div>
+                                <div class="item-title-8">
+                                    <a href="./demo02.html">
+                                        <p>模仿“b站”的弹幕</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ol>
                     </li>
-                    <li class="item-3 d-flex flex-column">
-                        <h4>小游戏</h4>
-                        <div class="item-title-1">
-                            <a href="./snake/indexV2.html">
-                                <h4>贪吃蛇</h4>
-                            </a>
-                            <div class="item-text">
-                                <span class="d-inline-block text-truncate" style="max-width: 200px;">
-                                    欢迎来到贪吃蛇小游戏的奇妙世界！这是一个简单却极具魅力的游戏平台，无论你是想在闲暇时刻寻找乐趣，还是渴望挑战自己的反应速度和策略思维，这里的贪吃蛇游戏都将为你带来非凡体验。
-                                </span>
-                            </div>
-                        </div>
-                        
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -225,6 +247,4 @@
 
 </html>
 
-<!-- 
 
--->·
